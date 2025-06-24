@@ -10,11 +10,13 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowBigLeftIcon } from 'lucide-react';
 
-export default async function StudentIdPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+type PageProps = {
+  params: {
+    id: Number;
+  };
+};
+
+export default async function StudentIdPage({ params }: PageProps) {
   const student = await getStudentById(Number(params.id));
 
   return (
