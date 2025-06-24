@@ -14,7 +14,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { ArrowBigLeftIcon } from 'lucide-react'
 
-const studentId = async ({ params }: { params: { id: Number } }) => {
+export default async function studentId({ params }: { params: { id: string } }) {
   const { id } = params
   const student= await getStudentById(Number(id))
   return (
@@ -46,4 +46,3 @@ const studentId = async ({ params }: { params: { id: Number } }) => {
   )
 }
 
-export default studentId
