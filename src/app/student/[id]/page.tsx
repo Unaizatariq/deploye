@@ -1,26 +1,21 @@
-import { getStudentById } from '@/app/actions/page'
-import React from 'react'
+import { getStudentById } from '@/app/actions/page';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { ArrowBigLeftIcon } from 'lucide-react'
+} from "@/components/ui/card";
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { ArrowBigLeftIcon } from 'lucide-react';
 
-// ✅ JUST THIS TYPE WAS ADDED
-type PageProps = {
-  params: {
-    id: string;
-  };
-};
-
-export default async function studentId({ params }: PageProps) {
-  const { id } = params
-  const student = await getStudentById(Number(id))
+export default async function StudentIdPage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const student = await getStudentById(Number(params.id));
 
   return (
     <div className='flex items-center justify-center h-screen'>
@@ -39,14 +34,14 @@ export default async function studentId({ params }: PageProps) {
             <p>Remarks: {student?.remarks}</p>
           </CardFooter>
           <div className='flex justify-center'>
-            <Link href={`/student/list`}>
-              <Button asChild className='w-[330px]'>
+            <Button asChild className='w-[330px]'>
+              <Link href={`/student/list`}>
                 <ArrowBigLeftIcon />
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </Card>
       </div>
     </div>
-  )
+  );
 }
