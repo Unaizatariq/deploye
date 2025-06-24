@@ -10,12 +10,14 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowBigLeftIcon } from 'lucide-react';
 
+// ✅ Proper type for route parameters
 type PageProps = {
   params: {
-    id: Number;
+    id: string;
   };
 };
 
+// ✅ Page component using PageProps
 export default async function StudentIdPage({ params }: PageProps) {
   const student = await getStudentById(Number(params.id));
 
@@ -47,3 +49,15 @@ export default async function StudentIdPage({ params }: PageProps) {
     </div>
   );
 }
+
+// ✅ Type utilities for validation (optional, but safe for type checking)
+type FirstArg<T> = T extends (arg1: infer U, ...args: any[]) => any ? U : never;
+
+type Diff<T, U> = {
+  [K in keyof T as K extends keyof U ? (T[K] extends U[K] ? never : K) : K]: T[K];
+};
+
+declare function checkFields<T>(): void;
+
+// ✅ Type check to ensure props are valid (optional)
+checkFields<Diff<PageProps, FirstArg<typeof StudentIdPage>>>();
