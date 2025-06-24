@@ -22,7 +22,7 @@ interface deletedialogprops {
   id: string | number;
 }
 
-const deletedialogue = ({id}: deletedialogprops) => {
+const DeleteDialogue = ({id}: deletedialogprops) => {
     const router = useRouter();
 
     const handleDelete = async () => {
@@ -54,4 +54,4 @@ const deletedialogue = ({id}: deletedialogprops) => {
   )
 }
 
-export default deletedialogue
+export default DeleteDialogue

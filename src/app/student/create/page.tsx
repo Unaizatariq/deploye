@@ -40,7 +40,7 @@ const formSchema = z.object({
 
 })
 
-export default function  createStudent() {
+export default function  CreateStudent() {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
