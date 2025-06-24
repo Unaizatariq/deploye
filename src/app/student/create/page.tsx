@@ -15,7 +15,6 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import studentId from "../[id]/page"
 import { studentCreate } from "@/app/actions/page"
 import { Student } from "@/generated/prisma"
 import { useRouter } from "next/navigation"
@@ -58,7 +57,6 @@ export default function  createStudent() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     await studentCreate(values as Student)
     console.log(values)
-    // router.push("/student")
     router.refresh();
     form.reset();
   }

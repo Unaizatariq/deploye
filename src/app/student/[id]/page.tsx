@@ -61,3 +61,8 @@
 
 // // ✅ Type check to ensure props are valid (optional)
 // checkFields<Diff<PageProps, FirstArg<typeof StudentIdPage>>>();
+
+// Disabled temporarily
+export default function StubPage() {
+  return <div>This page is disabled.</div>;
+}
